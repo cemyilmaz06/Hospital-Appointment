@@ -8,7 +8,7 @@ const AppointmentList = ({ apps,setApps }) => {
 
   }
   const handleDoubleClick=(id)=>{
-setApps(apps.map((item)=>item.id === id ? {...item, consulted: !item.consulted} : item))
+setApps(apps.map((item)=>item.id === id ? {...item, consulted: !item.consulted} : item ))
   }
   return (
     <Container className="p-2">
