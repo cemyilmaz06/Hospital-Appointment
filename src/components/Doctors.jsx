@@ -5,7 +5,7 @@ import AddModal from "./AddModal"
 import { useState } from "react"
 const Doctors = ({apps,setApps}) => {
   const [show, setShow] = useState(false);
-
+const [drName, setDrName] = useState("")
   // const handleClose = () => setShow(false);
   // const handleShow = () => setShow(true);
   // const handleImgClick=()=>{
@@ -20,12 +20,13 @@ const Doctors = ({apps,setApps}) => {
   <Row className="justify-content-center"> 
   {doctorData.map(({id,name,dep,img})=>(
     <Col xs={6} md={4} lg={3} key={id} >
-  <img src={img} alt="name" className="img-thumbnail doctor-img" onClick={()=> setShow(true)} />
+  <img src={img} alt="name" className="img-thumbnail doctor-img" onClick={()=>{setDrName(name) 
+  setShow(true)}} />
   <h5>{name} </h5>
   <h6>{dep} </h6>
   </Col>
  ))} </Row>
- <AddModal show={show} handleClose={()=> setShow(false)}/>
+ <AddModal show={show} handleClose={()=> setShow(false)} apps={apps} setApps={setApps}  drName={drName} />
     </Container>
   )
 }

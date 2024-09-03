@@ -3,18 +3,25 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
 
-function AddModal({ show, handleClose }) {
+function AddModal({ show, handleClose ,apps,setApps,drName}) {
     const [name, setName] = useState("")
     const [date, setDate] = useState("")
    const handleSubmit=(e)=>{
     e.preventDefault();
+    setApps([...apps, {
+        id: apps.length + 1,
+        patient: name,
+        day: date,
+        consulted: false,
+        doctor: drName
+    }])
     handleClose();
    }
   return (
     <>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Reservation for ...</Modal.Title>
+          <Modal.Title>Reservation for {drName} </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit} >
