@@ -3,7 +3,7 @@ import {doctorData} from "../helper/data"
 import { Col, Row } from "react-bootstrap"
 import AddModal from "./AddModal"
 import { useState } from "react"
-const Doctors = () => {
+const Doctors = ({apps,setApps}) => {
   const [show, setShow] = useState(false);
 
   // const handleClose = () => setShow(false);

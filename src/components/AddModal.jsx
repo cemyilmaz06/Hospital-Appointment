@@ -1,8 +1,15 @@
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { useState } from "react";
 
 function AddModal({ show, handleClose }) {
+    const [name, setName] = useState("")
+    const [date, setDate] = useState("")
+   const handleSubmit=(e)=>{
+    e.preventDefault();
+    handleClose();
+   }
   return (
     <>
       <Modal show={show} onHide={handleClose}>
@@ -10,16 +17,16 @@ function AddModal({ show, handleClose }) {
           <Modal.Title>Reservation for ...</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form>
+          <Form onSubmit={handleSubmit} >
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Patient Name:</Form.Label>
-              <Form.Control type="text" placeholder="Enter Your Name" />
+              <Form.Control type="text" placeholder="Enter Your Name"onChange={(e)=>setName(e.target.value)} />
               <Form.Text className="text-muted"></Form.Text>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>Dat&Time</Form.Label>
-              <Form.Control type="datetime-local" placeholder="date" />
+              <Form.Control type="datetime-local" placeholder="date" onChange={(e)=>setDate(e.target.value)} value={date} />
             </Form.Group>
             <div className="text-center ">
               <Button variant="success" type="submit" className="me-2">
