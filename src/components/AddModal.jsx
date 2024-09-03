@@ -15,6 +15,7 @@ function AddModal({ show, handleClose ,apps,setApps,drName}) {
         consulted: false,
         doctor: drName
     }])
+    setName("");
     handleClose();
    }
   return (
@@ -27,13 +28,16 @@ function AddModal({ show, handleClose ,apps,setApps,drName}) {
           <Form onSubmit={handleSubmit} >
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Patient Name:</Form.Label>
-              <Form.Control type="text" placeholder="Enter Your Name"onChange={(e)=>setName(e.target.value)} />
+              <Form.Control type="text" placeholder="Enter Your Name"onChange={(e)=>setName(e.target.value)}
+            value={name}
+              required />
               <Form.Text className="text-muted"></Form.Text>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>Dat&Time</Form.Label>
-              <Form.Control type="datetime-local" placeholder="date" onChange={(e)=>setDate(e.target.value)} value={date} />
+              <Form.Control type="datetime-local" placeholder="date" onChange={(e)=>setDate(e.target.value)} value={date}
+              required/>
             </Form.Group>
             <div className="text-center ">
               <Button variant="success" type="submit" className="me-2">
